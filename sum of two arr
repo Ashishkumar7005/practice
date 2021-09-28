@@ -1,0 +1,40 @@
+//sum of 2 arrays
+#include<iostream>
+using namespace std;
+int main(){
+int i,j,n,m;
+cin>>n>>m;
+int arrayA[n][m];
+int arrayB[n][m];
+
+for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+        cin>>arrayA[i][j];
+    }
+}
+for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+        cin>>arrayB[i][j];
+        }
+}
+for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+        cout<<arrayA[i][j]<<" ";
+    }cout<<endl;
+}
+cout<<" ARRAY B IS "<<endl;
+for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+        cout<<arrayB[i][j]<<" ";
+        }cout<<endl;
+}
+//cout<<"the sum of two array is "<<endl;
+int sum[n][m];
+for( i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+sum[i][j]=  arrayA[i][j]+arrayB[i][j];
+cout<<sum[i][j]<<" ";
+    }cout<<endl;
+}
+return 0;
+}
