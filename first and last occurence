@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int firstoccurence(int n, int a[],int i, int key){
+     if(i==n){
+         return -1;
+     }
+   if(a[i]==key){
+       return i;}
+   return firstoccurence(n,a,i+1,key);
+   
+}
+int lastocc(int n, int a[],int i, int key){
+if(i==n){
+    return -1;
+}
+int restarr= lastocc(n,a,i+1,key);
+if(restarr!=-1){
+    return restarr;
+}
+if(a[i]==key){
+    return i;
+}
+return -1;
+}
+
+int main(){
+   int a[9]={1,2,8,9,8,7,5,3,8};
+  
+  
+  cout<<firstoccurence(5,a,0,8)<<endl;
+cout<<lastocc(9,a,0,8);
+   }
