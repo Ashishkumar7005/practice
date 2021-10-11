@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    int arr[n][m];
+    for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+                cin>>arr[i][j];}    }
+  }
+int rowe=n-1,cole=m-1, rowi=0,coli=0;
+while(rowi<=rowe && coli<=cole){
+for(int col=coli;col<=cole;col++){
+    cout<<arr[rowi][col]<<" ";
+}
+rowi++;
+for(int row=rowi;row<=rowe;row++){
+    cout<<arr[row][cole]<<" ";
+}
+cole--;
+for(int col= cole; col>=coli;col--){
+    cout<<arr[rowe][col]<<" ";
+}
+rowe--;
+for(int row=rowe;row>=rowi;row--){
+    cout<<arr[row][coli]<<" ";
+}
+coli++;
+}
+}
