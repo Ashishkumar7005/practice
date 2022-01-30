@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+void printpath(int** arr, int n, int** sol, int x, int y){
+    if(x==n-1 && y==n-1){
+        sol[x][y]=1;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                cout<<sol[i][j];
+            }cout<<endl;
+        }cout<<endl;
+        return;
+    }
+      if(x<0 || y<0 ||x>=n || y>=n || arr[x][y]==0 || sol[x][y]==1){
+        return;
+    }
+    sol[x][y]=1;
+    printpath(arr,n,sol,x-1,y);
+    printpath(arr,n,sol,x+1,y);
+    printpath(arr,n,sol,x,y+1);
+    printpath(arr,n,sol,x,y-1);
+sol[x][y]=0;
+}
+
+bool pathhelp(int** arr, int n, int** sol, int x, int y){
+    if(x==n-1 && y==n-1){
+        return true;
+    }
+    if(x<0 || y<0 ||x>=n || y>=n || arr[x][y]==0 || sol[x][y]==1){
+        return false;
+    }
+    sol[x][y]=1;
+    if(pathhelp(arr,n,sol,x-1,y)){
+        return true;
+    }
+        if(pathhelp(arr,n,sol,x+1,y)){
+        return true;
+    }
+        if(pathhelp(arr,n,sol,x,y-1)){
+        return true;
+    }
+        if(pathhelp(arr,n,sol,x,y+1)){
+        return true;
+    }
+    sol[x][y]=0;
+    return false;
+}
+
+bool haspath(int** arr ,int n){
+    int** sol=new int*[n];
+    for(int i=0;i<n;i++){
+        sol[i]= new int[n];
+        for(int j=0;j<n;j++){
+            sol[i][j]=0;
+        }
+    }
+ printpath(arr,n,sol,0,0);
+  //  return pathhelp(arr,n,sol,0,0);
+}
+
+int main()
+{ int** arr;
+ int n;
+ cin>>n;
+ arr= new int*[n];
+ for(int i=0;i<n;i++){
+     arr[i]= new int[n];
+     for(int j=0;j<n;j++){
+         cin>>arr[i][j];
+     }
+ }
+ 
+cout<<haspath(arr,n);  
+}
