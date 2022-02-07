@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Node{
+  public:
+  int data;
+  //Node *head;
+  Node* next;
+
+Node(int data){
+    this->data= data;
+    next= NULL;
+} 
+};
+Node* insertnode(Node* head, int i, int data){
+    Node* newnode=  new Node(data);
+    int count=0;
+    Node* temp= head;
+    
+    if(i==0){
+        newnode->next= head;
+        head= newnode;
+        return head;
+    }
+    while(temp!=NULL && count<i-1){
+        temp= temp-> next;
+        count++;
+    }
+    if(temp!=NULL){
+        Node* a= temp-> next;
+        temp->next= newnode;
+        newnode= a;
+    }
+    
+    //Node *head= NULL;
+return head;
+    
+}
+
+Node* takeinput(){
+    int data;
+    cin>>data;
+    Node *head= NULL;
+    while(data!=-1){
+        Node* newnode= new Node(data);
+        if(head==NULL){
+            head= newnode;
+            
+        }
+        else{
+            Node* temp= head;
+            while(temp->next!=NULL){
+                temp= temp->next;
+            }
+            temp->next= newnode;     
+            
+    }
+    cin>>data;
+        
+    }
+    return head;
+}
+
+
+void print(Node *head){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+}
+int main()
+{
+    Node* head= takeinput();
+    int i,data;
+    cin>>i>>data;
+     head= insertnode(head,i,data);
+    print(head);
+//    printf("Hello World");
+
+    return 0;
+}
