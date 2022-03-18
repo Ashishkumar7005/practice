@@ -1,0 +1,34 @@
+//iteratively
+Node* reverseLL( Node* head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    Node* prev= NULL;
+    Node* curr= head;
+    while(curr!=NULL){
+    Node* forward= curr->next;
+    curr->next=prev;
+    prev=curr;
+    curr=forward;
+   
+    }
+    return prev;
+}
+//iterative ka recursive version
+void reverseLink( Node* head,Node* curr, Node* prev){
+    if(head==NULL || head->next==NULL){
+        return;
+    }
+    Node* forward= curr->next;
+    reverseLink(head,forward,curr);
+    curr->next=prev;
+}
+//recursively
+Node* rev(Node* head){
+if(head==NULL || head->next==NULL){
+    return head;
+}    
+Node* chotahead= rev(head->next);
+head->next->next=head;
+head->next=NULL;
+}
